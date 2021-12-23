@@ -21,7 +21,7 @@ npm install @archireport/react-native-static-html-to-pdf
 ## Usage
 
 ```js
-import { generatePdf } from 'react-native-static-html-to-pdf';
+import { generatePdf } from '@archireport/react-native-static-html-to-pdf';
 
 // ...
 
