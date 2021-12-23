@@ -9,7 +9,7 @@ import {
   exists,
 } from 'react-native-fs';
 import { unzip } from 'react-native-zip-archive';
-import { generatePdf } from 'react-native-static-html-to-pdf';
+import { generatePdf } from '@archireport/react-native-static-html-to-pdf';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import type { ParamsList } from './types';
 
@@ -48,15 +48,13 @@ export default function App() {
 
                 const contentType = res.info().headers['Content-Type'];
 
-                await mkdir(`${DocumentDirectoryPath}/public`);
-
                 if (contentType.includes('application/zip')) {
-                  const targetPath = `file://${DocumentDirectoryPath}/public`;
+                  const targetPath = `file://${DocumentDirectoryPath}`;
 
                   await unzip(path, targetPath);
 
                   const pdf = await generatePdf({
-                    path: `${DocumentDirectoryPath}/public/export/default/index.html`,
+                    path: `${DocumentDirectoryPath}/export/default/index.html`,
                     target: 'http://finishload.com',
                     documentName: 'file.pdf',
                     width: 612,
@@ -67,7 +65,7 @@ export default function App() {
                 } else {
                   const urlObj = new URL(url);
 
-                  const directory = `${DocumentDirectoryPath}/public${urlObj.pathname}`;
+                  const directory = `${DocumentDirectoryPath}${urlObj.pathname}`;
                   await mkdir(directory);
 
                   const targetPath = `file://${directory}/index.html`;
@@ -75,11 +73,11 @@ export default function App() {
                   if (await exists(targetPath)) {
                     await unlink(targetPath);
                   }
-                  console.log({ targetPath });
+
                   await moveFile(path, targetPath);
 
                   const pdf = await generatePdf({
-                    path: `${DocumentDirectoryPath}/public${urlObj.pathname}/index.html`,
+                    path: `${DocumentDirectoryPath}${urlObj.pathname}/index.html`,
                     target: 'http://finishload.com',
                     documentName: 'file.pdf',
                     width: 592,
@@ -113,10 +111,9 @@ export default function App() {
                 const path = res.path();
 
                 const contentType = res.info().headers['Content-Type'];
-                await mkdir(`${DocumentDirectoryPath}/public`);
 
                 if (contentType.includes('application/zip')) {
-                  const targetPath = `file://${DocumentDirectoryPath}/public`;
+                  const targetPath = `file://${DocumentDirectoryPath}`;
 
                   await unzip(path, targetPath);
 
@@ -126,7 +123,7 @@ export default function App() {
                 } else {
                   const urlObj = new URL(url);
 
-                  const directory = `${DocumentDirectoryPath}/public${urlObj.pathname}`;
+                  const directory = `${DocumentDirectoryPath}${urlObj.pathname}`;
                   await mkdir(directory);
 
                   const targetPath = `file://${directory}/index.html`;
