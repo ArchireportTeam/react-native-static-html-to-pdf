@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "react-native-static-html-to-pdf": ["./src/index"]
+      "@archireport/react-native-static-html-to-pdf": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

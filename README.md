@@ -36,13 +36,13 @@ const pathOfGeneratedPdf = await generatePdf({
 
 where
 
-| param        | description                                        | example                                                                                          |
-| ------------ | -------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| path         | path to your html file                             | `${DocumentDirectoryPath}/index.html` (_DocumentDirectoryPath_ is provided by `react-native-fs`) |
-| target       | url used to indicate that js execution is finished | `http://finishload.com`                                                                          |
-| documentName | name of the generated pdf (in cache directory)     | `file.pdf`                                                                                       |
-| width        | width of the generated pdf                         | 612                                                                                              |
-| height       | height of the generated pdf                        | 792                                                                                              |
+| param        | description                                         | example                                                                                          |
+| ------------ | --------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| path         | path to your html file (it must be under documents) | `${DocumentDirectoryPath}/index.html` (_DocumentDirectoryPath_ is provided by `react-native-fs`) |
+| target       | url used to indicate that js execution is finished  | `http://finishload.com`                                                                          |
+| documentName | name of the generated pdf (in cache directory)      | `file.pdf`                                                                                       |
+| width        | width of the generated pdf                          | 612                                                                                              |
+| height       | height of the generated pdf                         | 792                                                                                              |
 
 ## Contributing
 

@@ -5,7 +5,7 @@ import {
   useRoute,
 } from '@react-navigation/core';
 import React from 'react';
-import { generatePdf } from 'react-native-static-html-to-pdf';
+import { generatePdf } from '@archireport/react-native-static-html-to-pdf';
 import { WebView } from 'react-native-webview';
 import { Box, VStack, Button, Spinner } from 'native-base';
 import type { ParamsList } from './types';
@@ -28,7 +28,7 @@ export default function Preview() {
   React.useEffect(() => {
     const server = new StaticServer(
       8084,
-      `${DocumentDirectoryPath}/public/${route.params.uri}`
+      `${DocumentDirectoryPath}/${route.params.uri}`
     );
     serverRef.current = server;
 
@@ -63,9 +63,6 @@ export default function Preview() {
               uri: url,
             }}
             onShouldStartLoadWithRequest={(request) => {
-              console.log('ploup', request.url);
-              console.log('plip', request.url.startsWith(url));
-
               // Only allow navigating within this website
               return request.url.startsWith(url);
             }}
@@ -84,7 +81,7 @@ export default function Preview() {
             try {
               setLoading(true);
               const pdf = await generatePdf({
-                path: `${DocumentDirectoryPath}/public${route.params.uri}/index.html`,
+                path: `${DocumentDirectoryPath}${route.params.uri}/index.html`,
                 target: 'http://finishload.com',
                 documentName: 'file.pdf',
                 width: 612,

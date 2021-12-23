@@ -56,8 +56,7 @@ open class StaticHtmlToPdfConverter(private var context: Context, private var pr
   override fun run() {
 
     val webView = WebView(context)
-    val publicDir = File(context.filesDir, "public")
-    val assetLoader = WebViewAssetLoader.Builder().addPathHandler("/public/", WebViewAssetLoader.InternalStoragePathHandler(context, publicDir)).build()
+    val assetLoader = WebViewAssetLoader.Builder().addPathHandler("/", WebViewAssetLoader.InternalStoragePathHandler(context, context.filesDir)).build()
 
     webView.webViewClient = object : WebViewClient() {
       @RequiresApi(21)
