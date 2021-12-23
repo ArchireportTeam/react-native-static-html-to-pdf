@@ -15,7 +15,7 @@ The returned value is the path of the generated pdf file
 ## Installation
 
 ```sh
-npm install react-native-static-html-to-pdf
+npm install @archireport/react-native-static-html-to-pdf
 ```
 
 ## Usage
