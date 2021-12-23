@@ -37,7 +37,7 @@
     "android"
   ],
   "repository": "https://github.com/ArchireportTeam/react-native-static-html-to-pdf",
-  "author": "Mickael Lecoq <mickael@lecoq.me> (https://github.com/ArchireportTeam)",
+  "author": "Mickael Lecoq <mickael@lecoq.me> (https://github.com/mlecoq)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ArchireportTeam/react-native-static-html-to-pdf/issues"

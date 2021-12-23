@@ -17,6 +17,12 @@ const StaticHtmlToPdf = NativeModules.StaticHtmlToPdf
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return StaticHtmlToPdf.multiply(a, b);
+export function generatePdf(params: {
+  path: string;
+  target: string;
+  documentName: string;
+  width: number;
+  height: number;
+}): Promise<string> {
+  return StaticHtmlToPdf.generatePdf(params);
 }

@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-static-server/ios/FPStaticServer.m b/node_modules/react-native-static-server/ios/FPStaticServer.m
+index a55a18f..d011f5d 100644
+--- a/node_modules/react-native-static-server/ios/FPStaticServer.m
++++ b/node_modules/react-native-static-server/ios/FPStaticServer.m
+@@ -77,7 +77,7 @@ - (dispatch_queue_t)methodQueue
+     NSString *basePath = @"/";
+     NSString *directoryPath = self.www_root;
+     NSString *indexFilename = @"index.html";
+-    NSUInteger cacheAge = 3600;
++    NSUInteger cacheAge = 0;
+     BOOL allowRangeRequests = YES;
+     [_webServer addHandlerWithMatchBlock:^GCDWebServerRequest*(NSString* requestMethod, NSURL* requestURL, NSDictionary<NSString*, NSString*>* requestHeaders, NSString* urlPath, NSDictionary<NSString*, NSString*>* urlQuery) {
+         if (![requestMethod isEqualToString:@"GET"]) {
