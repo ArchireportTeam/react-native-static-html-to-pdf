@@ -1,5 +1,5 @@
 {
-  "name": "react-native-static-html-to-pdf",
+  "name": "@archireport/react-native-static-html-to-pdf",
   "version": "0.1.0",
   "description": "Convert static html file to pdf",
   "main": "lib/commonjs/index",
