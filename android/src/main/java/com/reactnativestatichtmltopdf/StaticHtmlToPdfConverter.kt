@@ -56,7 +56,13 @@ open class StaticHtmlToPdfConverter(private var context: Context, private var pr
   override fun run() {
 
     val webView = WebView(context)
-    val assetLoader = WebViewAssetLoader.Builder().addPathHandler("/", WebViewAssetLoader.InternalStoragePathHandler(context, context.filesDir)).build()
+    val assetLoader: WebViewAssetLoader;
+    if(params.getPath().contains(context.cacheDir.path)){
+      assetLoader = WebViewAssetLoader.Builder().addPathHandler("/", WebViewAssetLoader.InternalStoragePathHandler(context,  File(context.cacheDir, "public"))).build()
+    } else {
+      assetLoader = WebViewAssetLoader.Builder().addPathHandler("/", WebViewAssetLoader.InternalStoragePathHandler(context, context.filesDir)).build()
+    }
+
 
     webView.webViewClient = object : WebViewClient() {
       @RequiresApi(21)
@@ -134,7 +140,6 @@ open class StaticHtmlToPdfConverter(private var context: Context, private var pr
     settings.textZoom = 100
     settings.defaultTextEncodingName = "utf-8"
     settings.javaScriptEnabled = true
-    webView.loadUrl("https://" + WebViewAssetLoader.DEFAULT_DOMAIN + params.getPath().replace(context.filesDir.path, "").replace("file://", ""))
-
+    webView.loadUrl("https://" + WebViewAssetLoader.DEFAULT_DOMAIN + params.getPath().replace(context.filesDir.path, "").replace(context.cacheDir.path + "/public", "").replace("file://", ""))
   }
 }
